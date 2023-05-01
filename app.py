@@ -46,12 +46,12 @@ def decisiontree():
 def generate_output(model,features,str):
     final_values = [np.array(features)]
     prediction = model.predict(final_values)
-    # print(prediction)
+    # print(features[0])
     if str == "linearregression":
         output = '{0:.{1}f}'.format(prediction[0],2)
-        return render_template("{}.html".format(str), pred =  'Predicted AQI is {}'.format(output) )
+        return render_template("{}.html".format(str), pred =  'Predicted AQI is {}'.format(output), so = features[0], no = features[1], rspm = features[2], spm = features[3])
     else:
-        return render_template("{}.html".format(str), pred =  'Air Quality is {}'.format(prediction[0]) )
+        return render_template("{}.html".format(str), pred =  'Air Quality is {}'.format(prediction[0]),so = features[0], no = features[1], rspm = features[2], spm = features[3])
 
 
 if __name__ == "__main__":

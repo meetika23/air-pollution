@@ -1,44 +1,232 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Logistic Regression</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <title>Air Quality Index Prediction</title>
+   <!-- Bootstrap core CSS -->
+   <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Fontawesome CSS -->
+   <link href="static/css/all.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="static/css/style.css" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+   <style>
+      .card-img-left {
+         width: 45%;
+         /* Link to your background image using in the property below! */
+         background-size: cover;
+      }
+
+      .btn-login {
+         font-size: 0.9rem;
+         letter-spacing: 0.05rem;
+         padding: 0.75rem 1rem;
+      }
+
+      .btn-google {
+         color: white !important;
+         background-color: #ea4335;
+      }
+
+      .btn-facebook {
+         color: white !important;
+         background-color: #3b5998;
+      }
+   </style>
 </head>
 
 <body>
-    <form action = '/logisticregression' method = "POST">
-        <div class=" d-flex align-items-center justify-content-center my-4">
-            <div class="row">
-                <div class="col">
-                    <label>SO2</label>
-                    <input type="text" class="form-control" name = "so">
-                </div>
-                <div class="col">
-                    <label>NO2</label>
-                    <input type="text" class="form-control" name = "no">
-                </div>
-                <div class="col">
-                    <label>RSPM</label>
-                    <input type="text" class="form-control" name = "rspm">
-                </div>
-                <div class="col">
-                    <label>SPM</label>
-                    <input type="text" class="form-control" name = "spm">
-                </div>
+   <!-- Navigation -->
+   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
+      <div class="container">
+         <a class="navbar-brand" href="/">
+            <img src="static/images/logo.png" height="80px" width="110px" alt="logo" />
+         </a>
+         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="fas fa-bars"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                  <a class="nav-link active" href="/">Home</a>
+               </li>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                     aria-haspopup="true" aria-expanded="false">
+                     Prediction Models
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                     <a class="dropdown-item" href="/linearregression">Linear Regression</a>
+                     <a class="dropdown-item" href="/logisticregression">Logistic Regression</a>
+                     <a class="dropdown-item" href="/decisiontree">Decision Tree</a>
+                     <a class="dropdown-item" href="/randomforest">Random Forest</a>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <header class="slider-main">
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+         <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+         </ol>
+         <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active"
+               style="background-image: url('static/images/Logistic-Regression-1.png'); background-size:1550px 700px;">
+               <div class="carousel-caption d-none d-md-block">
+                  <h3>Air Quality Index Predictor</h3>
+                  <p>A great way to predict air quality index of future years</p>
+               </div>
             </div>
-        </div>
-        <div class="text-center my-4">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-    <h4 style="text-align:center;">{{pred}}</h4>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item"
+               style="background-image: url('static/images/Logistic-Regression-2.jpg');  background-size:1550px 640px; ">
+               <div class="carousel-caption d-none d-md-block">
+                  <h3>Air Quality Index Predictor</h3>
+                  <p>A great way to predict air quality index of future years</p>
+               </div>
+            </div>
+            <div class="carousel-item"
+            style="background-image: url('static/images/Logistic-Regression-3.jpg');  background-size:1550px 640px; ">
+            <div class="carousel-caption d-none d-md-block">
+               <h3>Air Quality Index Predictor</h3>
+               <p>A great way to predict air quality index of future years</p>
+            </div>
+         </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+            </a>
+         </div>
+   </header>
+   <!-- Page Content -->
+   <div class="container">
+      <!-- About Section -->
+      <div class="about-main">
+         <div class="row">
+            <div class="col-lg-6">
+               <h2>Logistic Regression</h2>
+               <p>Logistic regression predicts the output of a categorical dependent variable. Therefore the outcome
+                  must be a categorical or discrete value. It can be either Yes or No, 0 or 1, true or False, etc. but
+                  instead of giving the exact value as 0 and 1, it gives the probabilistic values which lie between 0
+                  and 1.Logistic Regression is much similar to the Linear Regression except that how they are used.
+                  Linear
+                  Regression is used for solving Regression problems, whereas Logistic regression is used for solving
+                  the classification problems.</p>
+               <br>
+               <h4>How it works?</h4>
+               <p>This web application predicts the Air Quality Index (AQI) by taking in levels of four major air
+                  pollutants - Sulphur dioxide (SO2), Nitrogen dioxide (NO2), Respirable Suspended Particulate Matter
+                  (RSPM), and Suspended Particulate Matter (SPM). To make these predictions, it
+                  uses Logistic Regression to analyze the pollutant levels and predict
+                  how they will impact air quality. The image on the right shows the confusion matrix of the Logistic
+                  Regression model. The accuracy of the model is 68.15%.</p>
+            </div>
+            <div class="col-lg-6">
+               <img class="img-fluid rounded" src="static/images/LogisticRegressionmodel.jpg "
+                  style="height: 450px; width: 750px" alt="" />
+            </div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+               <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                  <div class="card-img-left d-none d-md-flex">
+                     <img src="static/images/card-image.jpeg" width="440" height="535">
+                     <!-- Background image for card set in CSS! -->
+                  </div>
+                  <div class="card-body p-4 p-sm-5">
+                     <h4 class="card-title text-center mb-5 fs-5">Air Quality Index Predictor</h4>
+                     <form action='/logisticregression' method="POST">
+
+                        <div class="form-floating mb-3">
+                           <input type="text" class="form-control" id="so" name="so">
+                           <label for="SO">SO<sub>2</sub></label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                           <input type="text" class="form-control" id="no" name="no">
+                           <label for="NO">NO<sub>2</sub></label>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-floating mb-3">
+                           <input type="text" class="form-control" id="rspm" name="rspm">
+                           <label for="RSPM">RSPM</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                           <input type="text" class="form-control" id="spm" name="spm">
+                           <label for="SPM">SPM</label>
+                        </div>
+
+                        <div class="d-grid mb-2">
+                           <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                              type="submit">Predict</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% if pred %}
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+               <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                  <div class="card-img-left d-none d-md-flex">
+                     <img src="static/images/card-image2.jpg" width="440" height="440">
+                  </div>
+                  <div class="card-body p-4 p-sm-5">
+                     <h4 class="card-title text-center mb-5 fs-5">Predicted Result</h4>
+                     <p>The entered values of different pollutants are:</p>
+                     <p>SO<sub>2</sub> : {{so}}</p>
+                     <p>NO<sub>2</sub> : {{no}}</p>
+                     <p>RSPM : {{rspm}}</p>
+                     <p>SPM : {{spm}}</p>
+                     <h5 class="card-title text-center mb-5 fs-5">{{pred}}</h5>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+   </div>
+   <!-- /.container -->
+   <!--footer starts from here-->
+   <footer class="footer">
+      <div class="container">
+         <div class="footer-logo">
+            <a href="#"><img src="static/images/logo.png" alt="" /></a>
+         </div>
+         <p class="copyright text-center"> Designed By Team Geeks</p>
+      </div>
+   </footer>
+
+   <!-- Bootstrap core JavaScript -->
+   <script src="static/vendor/jquery/jquery.min.js"></script>
+   <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>
